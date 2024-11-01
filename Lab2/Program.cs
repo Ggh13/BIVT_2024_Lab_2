@@ -36,9 +36,9 @@ public class Program
         //program.Task_2_12(10, 0);
 
 
-        program.Task_2_13(1.5, 3, 1);
-        program.Task_2_13(0.2, 2.8, 1);
-        program.Task_2_13(3, 2.5, 1);
+       // program.Task_2_13(1.5, 3, 1);
+        //program.Task_2_13(0.2, 2.8, 1);
+        //program.Task_2_13(3, 2.5, 1);
 
 
 
@@ -52,7 +52,7 @@ public class Program
         //program.Task_3_6();
         //program.Task_3_7();
         //program.Task_3_8();
-        //program.Task_3_9();
+        program.Task_3_9();
         //program.Task_3_10();
         //program.Task_3_11();
         //program.Task_3_12(10, 0);
@@ -221,17 +221,18 @@ public class Program
     public double Task_2_1(int n)
     {
         double answer = 0;
-
+        if (n == 0)
+        {
+            Console.WriteLine(answer);
+            return 0;
+        }
         for (int i = 0; i < n; i++)
         {
             answer = answer + int.Parse(Console.ReadLine());
         }
 
         answer = answer / n;
-        if (n == 0)
-        {
-            return 0;
-        }
+        
 
 
         Console.WriteLine(answer);
@@ -368,6 +369,15 @@ public class Program
         int answer = 0;
         double answerLength = 9999999;
 
+        if (n == 0)
+        {
+            answerLength = 0;
+            Console.WriteLine(answer);
+            Console.WriteLine(answerLength);
+
+            return (answer, answerLength);
+        }
+
         for (int i = 1; i <= n; i++)
         {
             double x = double.Parse(Console.ReadLine());
@@ -384,10 +394,6 @@ public class Program
 
 
 
-        if (n == 0)
-        {
-            answerLength = 0;
-        }
         Console.WriteLine(answer);
         Console.WriteLine(answerLength);
 
@@ -396,6 +402,13 @@ public class Program
     public double Task_2_9(int n)
     {
         double answer = 99999999;
+        if (n == 0)
+        {
+            answer = 0; 
+            Console.WriteLine(answer);
+
+            return 0;
+        }
 
         for (int i = 0; i < n; i++)
         {
@@ -407,10 +420,7 @@ public class Program
             }
         }
 
-        if (n == 0)
-        {
-            answer = 0;
-        }
+       
 
         Console.WriteLine(answer);
 
@@ -438,7 +448,7 @@ public class Program
             }
         }
 
-        
+
 
         return 0;
     }
@@ -446,7 +456,13 @@ public class Program
     {
         int answer = 0;
         double avg = 0.0;
-
+        if (n == 0)
+        {
+            avg = 0;
+            Console.WriteLine(0);
+            Console.WriteLine(0);
+            return (answer, avg);
+        }
         for (int i = 0; i < n; i++)
         {
             bool fl = true;
@@ -470,10 +486,7 @@ public class Program
 
         avg = avg / n * 4;
 
-        if (n == 0)
-        {
-            avg = 0;
-        }
+        
 
 
         Console.WriteLine(answer);
@@ -534,7 +547,7 @@ public class Program
         {
             answer = 0;
         }
-        
+
         answer = Math.Round(answer, 2);
         Console.WriteLine(answer);
         return answer;
@@ -568,28 +581,29 @@ public class Program
     public double Task_3_3()
     {
         double answer = 0;
-
+        int nS = 0;
 
         string tryN = Console.ReadLine();
 
         while (tryN != "-1")
         {
-            int n = Int32.Parse(tryN);
+            
 
 
-            for (int i = 0; i < n; i++)
-            {
-                double weight = double.Parse(Console.ReadLine());
+           
+                double weight = double.Parse(tryN);
 
                 if (weight < 30)
                 {
                     answer += 0.2;
                 }
-            }
+                nS+=1;
 
 
-            Console.WriteLine(answer);
+            
+            tryN = Console.ReadLine();
         }
+        Console.WriteLine(answer);
         return 0;
 
     }
@@ -618,26 +632,34 @@ public class Program
         int answer = 0;
 
         // code here
-        string tryN = Console.ReadLine();
-
-        while (tryN != "-1")
+        string tryN1 = Console.ReadLine();
+        if (tryN1 == "-1") {
+            Console.WriteLine(0);
+            return 0;
+        }
+        string tryN2 = Console.ReadLine();
+        while (tryN1 != "-1" && tryN2 != "-1")
         {
-            int n = Int32.Parse(tryN);
+            
 
-            for (int i = 0; i < n; i++)
-            {
-
-                double x = double.Parse(Console.ReadLine());
-                double y = double.Parse(Console.ReadLine());
+                double x = double.Parse(tryN1);
+                double y = double.Parse(tryN2);
 
                 if ((0 <= x && x <= Math.PI) && (0 <= y && y <= Math.Sin(x)))
                 {
                     answer++;
                 }
-            }
+            
 
-            Console.WriteLine(answer);
+           
+             tryN1 = Console.ReadLine();
+            if (tryN1 == "-1")
+            {
+                break;
+            }
+            tryN2 = Console.ReadLine();
         }
+        Console.WriteLine(answer);
         return 0;
         // end
 
@@ -667,31 +689,28 @@ public class Program
     public double Task_3_9()
     {
         string tryN = Console.ReadLine();
-
+        double answer = 99999999;
         while (tryN != "-1")
         {
-            int n = Int32.Parse(tryN);
-            double answer = 99999999;
+          
+            
 
-            for (int i = 0; i < n; i++)
-            {
-                double res = double.Parse(Console.ReadLine());
+           
+                double res = double.Parse(tryN);
 
                 if (res < answer)
                 {
                     answer = res;
                 }
-            }
+            
 
-            if (n == 0)
-            {
-                answer = 0;
-            }
+            
 
-            Console.WriteLine(answer);
-
+            
+            tryN = Console.ReadLine();
 
         }
+        Console.WriteLine(answer);
         return 0;
     }
     public int Task_3_10()
